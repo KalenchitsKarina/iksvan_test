@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-sdxz_cn!b)h0icmo0=mxy#qu48q0*s3tp@(&b)#0txwgcinc-1
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['kkalen9c.beget.tech', 'www.kkalen9c.beget.tech']
 
 
 # Application definition
@@ -23,11 +23,10 @@ INSTALLED_APPS = [
 
     'allauth',
     'allauth.account',
+    'bootstrap4',
 
     'app',
 ]
-
-SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -97,15 +96,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-SOCIALACCOUNT_PROVIDERS = {
-    'github': {
-        'SCOPE': [
-            'user',
-            'repo',
-            'read:org',
-        ],
-    }
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -120,9 +110,21 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Allauth settings
+SITE_ID = 1
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
 LOGIN_REDIRECT_URL = '/'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'shortlinksservice@gmail.com'
+EMAIL_HOST_PASSWORD = 'ilakceymibyinoyn'
+EMAIL_USE_TLS = True
+EMAIL_FROM = 'shortlinksservice@gmail.com'
+DEFAULT_FROM_EMAIL = 'shortlinksservice@gmail.com'
+
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
 

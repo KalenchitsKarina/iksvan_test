@@ -1,32 +1,23 @@
-
 {% extends "account/base.html" %}
-
-
 {% block content %}
-<div class="container">
-<table class="table table-sm mt-5">
-  <thead>
-    <tr>
-
-      <th scope="col">Full Link</th>
-      <th scope="col">Short Link</th>
-
-    </tr>
-  </thead>
-       {% for link in links %}
-  <tbody>
-    <tr>
-
-      <td><a class="text-dark" href="{{ link.full_link }}">{{ link.full_link }}</a></td>
-      <td><a class="text-dark" href="http://127.0.0.1:8000/{{link.short_link}}">http://127.0.0.1:8000/{{link.short_link}}</a></td>
-
-    </tr>
-
-  </tbody>
-        {% endfor %}
-</table>
+    <div class="container">
+        <table class="table table-sm mt-5">
+          <thead>
+            <tr>
+              <th scope="col">Full Link</th>
+              <th scope="col">Short Link</th>
+            </tr>
+          </thead>
+               {% for link in links %}
+          <tbody>
+            <tr>
+              <td style="max-width: 700px"><a class="text-dark" href="{{ link.full_link }}">{{ link.full_link }}</a></td>
+              <td><a class="text-dark" href="{{link.short_link}}">http://kkalen9c.beget.tech/{{link.short_link}}</a></td>
+            </tr>
+          </tbody>
+                {% endfor %}
+        </table>
     </div>
-  <footer class="mt-auto text-white-50">
-        <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+    <footer class="mt-auto text-white-50"><p></p>
     </footer>
 {% endblock %}

@@ -1,62 +1,41 @@
 {% extends "account/base.html" %}
-
 {% load i18n %}
-
 {% block head_links %}
-
 <title>Home</title>
-
 {% endblock %}
-
 {% block content %}
-{% if user.is_authenticated %}
 
-
+    {% if user.is_authenticated %}
   <main class="px-3 flex-column col justify-content-between mt-5">
-
-
       <div class="mt-5">
-      <p class="lead mt-5 mx-auto" style='max-width: 700px;'>On this page, you can turn a long and complex link into a simple one.
-    Such links are more convenient to use in your posts and messages.</p>
-        <form class="container-fluid text-center " style='max-width: 700px;' id="link_form" method="POST" action="{% url 'home' %}">
-        {% csrf_token %}
+          <p class="lead mt-5 mx-auto" style='max-width: 700px;'>On this page, you can turn a long and complex link into
+              a simple one. Such links are more convenient to use in your posts and messages.</p>
+          <form class="container-fluid text-center " style='max-width: 700px;' id="link_form" method="POST" action="{% url 'home' %}">
+              {% csrf_token %}
+              <div class=" g-3 align-items-center mt-5">
+                    {% for field in form %}
+                  <div class="col-auto mx-auto">
 
-        <div class=" g-3 align-items-center mt-5">
-            {% for field in form %}
-            <div class="col-auto mx-auto">
+                      <div class="p-2 ">{{field}}</div>
+                      {% if short_link %}
+                      <div class="p-2 "><input class="form-control btn-block" value="{{ short_link }}"></div>
+                      {% endif %}
 
-            <div class="p-2 ">{{field}}</div>
-            {% if field.errors%}
-            <div class="col-auto error">{{field.errors}}</div>
-            {% endif %}
-                <div class="p-2">
-                <button class="btn btn-lg btn-secondary fw-bold border-white btn-block my-auto" type="submit">shorten link</button></div>
-            </div>
+                      {% if field.errors%}
+                      <div class="col-auto error">{{field.errors}}</div>
+                      {% endif %}
+
+                      <div class="p-2">
+                          <button class="btn btn-lg btn-secondary fw-bold border-white btn-block my-auto" type="submit">shorten link</button></div>
+                  </div>
               </div>
-        </form>
-
-        {% endfor %}
-           {% if full_link %}
-    <p class="lead"><a class="text-dark" href="{{ full_link }}">{{ full_link }}</a> : <a class='h4 text-dark' href="{{ text }}">{{ text }}</a></p>
-    <p class="lead">   </p>  {% endif %}
-
-            {% else %}
-          <div class="mt-5">
-          <p class="mt-5"> Please login to see this page.</p>
-
-            {% endif %}
-
-            </div>
-       <footer class="mt-auto text-white-50">
-   <p></p>
- </footer>
-
+          </form>
+                    {% endfor %}
+          {% else %}
+              <div class="mt-5"> <p class="mt-5"> Please login to see this page .</p>
+                  {% endif %}
+              </div>
+      </div>
+      <footer class="mt-auto text-white-50"><p></p></footer>
   </main>
-
-
-
-
-
-
-
 {% endblock %}
